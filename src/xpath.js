@@ -1412,11 +1412,11 @@ let xpathfunctions = {
         const str = this.args[0].evaluate(ctx).stringValue();
         const separator = this.args[1].evaluate(ctx).stringValue();
         var ret = str.split(separator);
-        console.log('1 RET FROM TOKENIZE', ret);
+        console.log('2 RET FROM TOKENIZE', ret);
         ret = ret.map((item) => {
             return new StringValue(item);
         });
-        return ret; //new NodeSetValue(ret);
+        return new NodeSetValue(ret);
     }
 };
 
