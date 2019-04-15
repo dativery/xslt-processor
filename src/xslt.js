@@ -251,6 +251,7 @@ function xsltProcessContext(input, template, output) {
             case 'value-of':
                 select = xmlGetAttribute(template, 'select');
                 value = xpathEval(select, input).stringValue();
+                console.log('INPUT', input, 'SELECT', select, 'VALUE', value);
                 node = domCreateTextNode(outputDocument, value);
                 output.appendChild(node);
                 break;
