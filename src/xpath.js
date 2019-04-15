@@ -47,7 +47,8 @@ import {
     copyArrayIgnoringAttributesWithoutValue,
     xmlValue,
     regExpEscape,
-    predicateExprHasPositionalSelector
+    predicateExprHasPositionalSelector,
+    domCreateTextNode
 } from "./util.js"
 import {
     XML_NC_NAME
@@ -1414,7 +1415,7 @@ let xpathfunctions = {
         var ret = str.split(separator);
         console.log('2 RET FROM TOKENIZE', ret);
         ret = ret.map((item) => {
-            return new StringValue(item);
+            return domCreateTextNode(ctx.node.ownerDocument, item);
         });
         return new NodeSetValue(ret);
     }
