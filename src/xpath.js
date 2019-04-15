@@ -1412,6 +1412,7 @@ let xpathfunctions = {
         const str = this.args[0].evaluate(ctx).stringValue();
         const separator = this.args[1].evaluate(ctx).stringValue();
         var ret = str.split(separator);
+        console.log('RET FROM TOKENIZE', ret);
         ret = ret.map((item) => {
             return new StringValue(item);
         });
