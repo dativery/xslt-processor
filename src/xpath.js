@@ -1412,6 +1412,9 @@ let xpathfunctions = {
         const str = this.args[0].evaluate(ctx).stringValue();
         const separator = this.args[1].evaluate(ctx).stringValue();
         var ret = str.split(separator);
+        ret = ret.map((item) => {
+            return new StringValue(item);
+        });
         return new NodeSetValue(ret);
     }
 };
