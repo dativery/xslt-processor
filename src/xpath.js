@@ -1417,6 +1417,12 @@ let xpathfunctions = {
             return domCreateTextNode(ctx.node.ownerDocument, item);
         });
         return new NodeSetValue(ret);
+    },
+    
+    'trim' (ctx) {
+        assert(this.args.length >= 1);
+        const str = this.args[0].evaluate(ctx).stringValue();
+        return new StringValue(str.trim());
     }
 };
 
