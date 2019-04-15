@@ -1405,6 +1405,14 @@ let xpathfunctions = {
             ret.push(ctx.node);
         }
         return new NodeSetValue(ret);
+    },
+
+    'tokenize' (ctx) {
+        assert(this.args.length >= 2);
+        const str = this.args[0].evaluate(ctx).stringValue();
+        const separator = this.args[1].evaluate(ctx).stringValue();
+        var ret = str.split(separator);
+        return new NodeSetValue(ret);
     }
 };
 
