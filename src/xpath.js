@@ -1412,7 +1412,12 @@ let xpathfunctions = {
         assert(this.args.length >= 2);
         const str = this.args[0].evaluate(ctx).stringValue();
         const separator = this.args[1].evaluate(ctx).stringValue();
-        var ret = str.split(separator);
+        var ret;
+        if (separator === '\\n') {
+            ret = str.split(/\r|\n/);
+        } else {
+            ret = str.split(separator);
+        }
         ret = ret.map((item) => {
             return domCreateTextNode(ctx.node.ownerDocument, item);
         });
